@@ -1,0 +1,25 @@
+name = "gas-metrics"
+main = "src/worker/index.ts"
+compatibility_date = "2024-01-15"
+
+# Environment variables
+[vars]
+# Google OAuth設定は後で環境変数として設定
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "gas-metrics-db"
+database_id = ""
+
+# Cron Triggers - 監視タスクを1日毎に実行
+[triggers]
+crons = ["0 0 * * *"]
+
+# Development configuration
+[env.development]
+vars = { ENVIRONMENT = "development" }
+
+# Production configuration  
+[env.production]
+vars = { ENVIRONMENT = "production" }
